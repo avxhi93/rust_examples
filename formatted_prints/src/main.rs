@@ -1,3 +1,9 @@
+#[derive(Debug)]
+struct Person <'a> {
+    name: &'a str,
+    age: u8
+}
+
 fn main() {
     // In general the {} will be automatically replaced with any arguments
     // these will be stringified
@@ -32,4 +38,18 @@ fn main() {
     struct Structure(i32);
 
     println!("This struct {:?} wont print... ", Structure(3));
+
+
+    #[derive(Debug)]
+    struct Deep(Structure);
+
+    // pretty print
+    println!("This struct shows deep structure {:#?}", Deep(Structure(5)));
+
+    let name = "Peter";
+    let age = 25;
+
+    let peter = Person{ name, age};
+    println!("{:#?}", peter);
+    
 }
